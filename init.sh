@@ -46,5 +46,10 @@ sudo  tldr --update
 #Install vscode 
 sudo snap install --classic code
 
+cp bashrc ../.bashrc
+source ../.bashrc
+
+cp vimrc ../.vimrc
+
 
 
