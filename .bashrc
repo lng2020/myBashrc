@@ -132,8 +132,8 @@ crun() {
 }
 # c-run filename
 
-alias update='sudo apt-get update'
-alias install='sudo apt-get install'
+alias update='sudo apt update'
+alias install='sudo apt install'
 
 alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
 
