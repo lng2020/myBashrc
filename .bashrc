@@ -116,6 +116,11 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# ambiguous complete
+
+bind 'set show-all-if-ambiguous on'
+bind 'TAB:menu-complete'
+
 cpprun() {
     echo "Compiling file..."
     g++ -o "$1" "$1.cpp"
@@ -132,10 +137,20 @@ crun() {
 }
 # c-run filename
 
-alias update='sudo apt update'
-alias install='sudo apt install'
+# some useful alias
 
+alias u='sudo apt update'
+alias i='sudo apt install'
+alias r='sudo apt remove'
+
+alias fd='fdfind'
 alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
+
+
+# Python alias
+
+alias py='python'
+alias pi='pip install'
 
 # Create new venv using python3
 # If no name is passed will default to .venv

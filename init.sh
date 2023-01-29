@@ -6,27 +6,42 @@ read GIT_USER_NAME
 echo "Input your Git user.email"
 read GIT_USER_EMAIL
 
-export GITHUB_TOKEN=$(cat ../token.txt)
-
-sudo apt update 
+export GITHUB_TOKEN=$(cat ~/token.txt)
 
 git config --global user.name $GIT_USER_NAME
 git config --global user.email $GIT_USER_EMAIL
+
+sudo apt update 
+
+#Install download tools
+sudo apt install wget
+sudo apt install curl
 
 #Install Java
 sudo apt install default-jdk default-jdk-doc default-jre default-jre-headless -y &&
 update-alternatives --display java
 
+#Install Python
+sudo apt install python3
+sudo apt install python-is-python3
+sudo apt install python3-pip
+
 #Install Mysql server and client
-sudo apt install -y mysql-server
+sudo apt install mysql-server
 
 #Install nodejs
-sudo apt install -y nodejs npm
+curl -fsSL https://deb.nodesource.com/setup_19.x | sudo -E bash - && sudo apt-get install -y nodejs
+sudo npm install -g n
+sudo n stable
 
 #Install utilities 
-sudo apt install -y tmux
-sudo apt install -y vim
-sudo apt install -y net-tools
+sudo apt install tmux
+sudo apt install vim
+sudo apt install net-tools
+sudo apt install fd-find
+sudo apt install ripgrep
+sudo npm install -g tldr
+sudo  tldr --update 
 
 #Install vscode 
 sudo snap install --classic code
