@@ -10,6 +10,7 @@ export GITHUB_TOKEN=$(cat ~/token.txt)
 
 git config --global user.name $GIT_USER_NAME
 git config --global user.email $GIT_USER_EMAIL
+git config --global core.editor "vim"
 
 sudo apt update 
 

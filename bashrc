@@ -145,7 +145,7 @@ alias r='sudo apt remove'
 
 alias fd='fdfind'
 alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
-
+alias h='history'
 
 # Python alias
 
