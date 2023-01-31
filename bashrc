@@ -86,7 +86,20 @@ fi
 
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-
+# add color feature to man page
+export LESS_TERMCAP_mb=$'\E[1m\E[32m'
+export LESS_TERMCAP_mh=$'\E[2m'
+export LESS_TERMCAP_mr=$'\E[7m'
+export LESS_TERMCAP_md=$'\E[1m\E[36m'
+export LESS_TERMCAP_ZW=""
+export LESS_TERMCAP_us=$'\E[4m\E[1m\E[37m'
+export LESS_TERMCAP_me=$'\E(B\E[m'
+export LESS_TERMCAP_ue=$'\E[24m\E(B\E[m'
+export LESS_TERMCAP_ZO=""
+export LESS_TERMCAP_ZN=""
+export LESS_TERMCAP_se=$'\E[27m\E(B\E[m'
+export LESS_TERMCAP_ZV=""
+export LESS_TERMCAP_so=$'\E[1m\E[33m\E[44m'
 # some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
@@ -116,6 +129,46 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# fast extract 
+function q-extract() {
+    if [ -f $1 ] ; then
+        case $1 in
+        *.tar.bz2)   tar -xvjf $1    ;;
+        *.tar.gz)    tar -xvzf $1    ;;
+        *.tar.xz)    tar -xvJf $1    ;;
+        *.bz2)       bunzip2 $1     ;;
+        *.rar)       rar x $1       ;;
+        *.gz)        gunzip $1      ;;
+        *.tar)       tar -xvf $1     ;;
+        *.tbz2)      tar -xvjf $1    ;;
+        *.tgz)       tar -xvzf $1    ;;
+        *.zip)       unzip $1       ;;
+        *.Z)         uncompress $1  ;;
+        *.7z)        7z x $1        ;;
+        *)           echo "don't know how to extract '$1'..." ;;
+        esac
+    else
+        echo "'$1' is not a valid file!"
+    fi
+}
+
+# fast compress
+function q-compress() {
+    if [ -n "$1" ] ; then
+        FILE=$1
+        case $FILE in
+        *.tar) shift && tar -cf $FILE $* ;;
+        *.tar.bz2) shift && tar -cjf $FILE $* ;;
+        *.tar.xz) shift && tar -cJf $FILE $* ;;
+        *.tar.gz) shift && tar -czf $FILE $* ;;
+        *.tgz) shift && tar -czf $FILE $* ;;
+        *.zip) shift && zip $FILE $* ;;
+        *.rar) shift && rar $FILE $* ;;
+        esac
+    else
+        echo "usage: q-compress <foo.tar.gz> ./foo ./bar"
+    fi
+}
 # ambiguous complete
 
 bind 'set show-all-if-ambiguous on'
