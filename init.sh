@@ -18,6 +18,9 @@ sudo apt update
 sudo apt install wget
 sudo apt install curl
 
+#Install build core
+sudo apt install build-essential cmake vim-nox python3-dev
+
 #Install Java
 sudo apt install default-jdk default-jdk-doc default-jre default-jre-headless -y &&
 update-alternatives --display java
@@ -34,6 +37,12 @@ sudo apt install mysql-server
 curl -fsSL https://deb.nodesource.com/setup_19.x | sudo -E bash - && sudo apt-get install -y nodejs
 sudo npm install -g n
 sudo n stable
+
+#Install c# core 
+sudo apt install mono-complete
+
+#Install golang
+sudo apt install golang
 
 #Install utilities 
 sudo apt install tmux
